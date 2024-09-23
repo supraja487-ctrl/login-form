@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    check the password is validate or not
+    1. Min length and max length
+    2. Atleast one upper case
+    3. Atleast one lower case
+    4. Atleast one number
+    5. Atleast one special character -->
+    <form action="empty.html" id="password">
+        <h1>PASSWORD VALIDATION</h1>
+        <input type="text" id="p1" placeholder="Enter a vald password"><br>
+        <span></span><br>
+        <input type="submit" value="submit">
+    </form>
+    <script>
+       
+        var form =document.getElementById("password");
+        var p1=document.getElementById("p1");
+        var span=document.getElementsByTagName("span")[0];
+        form.addEventListener("submit",function(event)
+    {
+        var length=false;
+        var uc=false;
+        var lc=false;
+        var num=false;
+        var sc=false;
+        var sp='!@#$&%';
+        event.preventDefault();
+        var p=p1.value;
+        for(i=0;i<p.length;i++)
+    {
+        if(p.length>=8 && p.length<=15)
+    {
+        length=true;
+    }
+    var ch=p[i];
+    if(ch>='A' && ch<='Z')
+    {
+        uc=true;
+    }
+    if(ch>='a' && ch<='z')
+    {
+        lc=true;
+    }
+    if(ch>='0' && ch<='9')
+    {
+        num=true;
+    }
+    if(sp.includes(ch))
+    {
+        sc=true;
+    }
+    }
+    if(!length)
+    {
+        span.textContent="Please Enter a valid length";
+        span.style.color="red";
+    }
+    else if(!uc)
+    {
+        span.textContent="Please Enter atleast one upper Case";
+        span.style.color="red"; 
+    }
+    else if(!lc)
+    {
+        span.textContent="Please Enter atleast one Lower Case";
+        span.style.color="red";
+    }
+    else if(!num)
+    {
+        span.textContent="Please Enter atleast one Number";
+        span.style.color="red";  
+    }
+    else if(!sc)
+    {
+        span.textContent="Please Enter atleast one special character";
+        span.style.color="red";
+    }
+    else{
+        span.textContent="Valid password";
+        span.style.color="green";
+        form.submit();
+    }
+    })
+    </script>
+</body>
+</html>
